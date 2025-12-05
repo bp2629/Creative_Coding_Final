@@ -1,29 +1,64 @@
-// Set the video capture as a global variable.
 let capture;
+let net = null;
+let maskGraphics;
+let lastSegMs = 0;
+let segInterval = 150;
 
 function setup() {
-  describe('Video capture from the device webcam.');
-  createCanvas(720, 400);
+  createCanvas(600, 600);
+  pixelDensity(1);
 
-  // Use the createCapture() function to access the device's
-  // camera and start capturing video.
   capture = createCapture(VIDEO);
-
-  // Make the capture frame half of the canvas.
-  capture.size(360, 200);
-
-  // Use capture.hide() to remove the p5.Element object made
-  // using createCapture(). The video will instead be rendered as
-  // an image in draw().
+  capture.size(600, 600);
   capture.hide();
+
+  maskGraphics = createGraphics(600, 600);
+  maskGraphics.pixelDensity(1);
+
+  // Load model with .then() instead of async/await
+  bodyPix.load().then(function(model) {
+    net = model;
+    console.log("Model loaded!");
+  });
+}
+
+function runSegmentationOnce() {
+  if (!net) return;
+
+  net.segmentPerson(capture.elt, {
+    flipHorizontal: true,
+    internalResolution: 'medium',
+    segmentationThreshold: 0.7
+  })
+  .then(function(segmentation) {
+
+    const fg = { r: 0, g: 0, b: 0, a: 255 };      // silhouette color
+    const bg = { r: 255, g: 255, b: 255, a: 255 }; // background color
+
+    const mask = bodyPix.toMask(segmentation, fg, bg);
+
+    bodyPix.drawMask(
+      maskGraphics.elt,  // where to draw the mask
+      capture.elt,       // source video
+      mask,              // mask
+      1.0,               // opacity
+      0,                 // blur
+      true               // flip horizontal
+    );
+  });
 }
 
 function draw() {
-  // Set the background to gray.
   background(51);
 
-  // Draw the resulting video capture on the canvas
-  // with the invert filter applied.
-  image(capture, 0, 0, 360, 400);
-  filter(POSTERIZE, 2);
+  image(capture, 0, 0, 600, 600);
+
+  // Run segmentation at intervals
+  if (millis() - lastSegMs > segInterval) {
+    lastSegMs = millis();
+    runSegmentationOnce(); // no async
+  }
+
+  // Draw mask on top
+  image(maskGraphics, 0, 0, 600, 600);
 }
