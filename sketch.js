@@ -23,7 +23,9 @@ let color_index = 0
 let frame
 let time = 0
 
-let image
+let snapshot
+let shot_time = 0
+let phone_number = 1
 
 function preload(){
 
@@ -38,6 +40,7 @@ function setup() {
 
   textFont(font);
   textSize(32);
+  textAlign(CENTER, CENTER)
   a_time = 0
 
 
@@ -128,22 +131,244 @@ function draw() {
   b = 255
   background(250)
 
+  // steve_job()
+
+  if (time <=1872){  animate_arrow()}
+
+  
+
+  if (time <= 134){
+
+  
+    image(logo,240,245,80,90)
+
+    
+  }
+  else if (time <= 198){
+    strokeWeight(0)
+    text("hello!", width/2 , height/2)
 
 
-  if (time <= 200) {
+  }
+  else if (time <= 264){
+    strokeWeight(0)
+    text("hello!", width/2 , height/2)
 
+    
+  }
+  else if (time <= 334){
+
+    strokeWeight(0)
+    text("Are you ready to dance?!", width/2 , height/2)
+
+    
+  }
+  else if (time <= 396){
+    strokeWeight(0)
+    text("Are you ready to dance?!", width/2 , height/2)
+
+    
+  }
+  else if (time <= 466){
+    strokeWeight(0)
+    text("Get ready!", width/2 , height/2)
+    
+
+    
+  }
+  else if (time <= 540){
+    strokeWeight(0)
+    text("dance!", width/2 , height/2)
+
+
+    
+  }
+  else if (time <=612){
+    run_mask()
+  }
+  else if (time <=700){
+
+    strokeWeight(0)
+    text("that was great!", width/2 , height/2)
+
+    
+  }
+  else if (time <=768){
+    strokeWeight(0)
+    text("lets go again!", width/2 , height/2)
+
+    
+  }
+  else if (time <=836){
+
+  
+    run_mask()
+
+    
+  }
+  else if (time <=904){
+
+
+
+    run_mask()
+    strokeWeight(0)
+  
+    text("oh, by the way", width/2 , 50)
+
+
+    
+  }
+  else if (time <=1040){
+
+
+
+    run_mask()
+    strokeWeight(0)
+    
+    text("did you know that roughly 5.3 billion", width/2 , 50)
+    text("phones are expected to go to waste", width/2 , 80)
+    text("at the end of this year.", width/2 , 110)
+  }
+  else if (time <=1176){
+
+    run_mask()
+    strokeWeight(0)
+    text("and a new phone is responsible for around ", width/2 , 50)
+    text("190 pounds of carbon emission", width/2 , 80)
+
+    
+
+  }
+  else if (time <=1335){
+    strokeWeight(0)
+    text("And that iPhones contain toxic ", width/2 , height/2)
+    text("materials such as", width/2  , height/2 +30)
+    
+  }
+  else if (time <=1471){
+   
+    strokeWeight(0)
+    text("lead, mercury, cadmium,", width/2 , height/2)
+    text("arsenic, chromium, and flame retardants", width/2  , height/2 +30)
+
+  }
+  else if (time <=1600){
+   
+    strokeWeight(0)
+    text("that totally suck for the enviornment! ", width/2 , height/2)
+
+  }
+  else if (time <=1668){
+    strokeWeight(0)
+    text("c'mon keep dancing!", width/2 , height/2)
+
+    
+  }
+  else if (time <=1736){
+    run_mask()
+   
+ 
+    
+  }
+
+  else if (time <=1872){
+
+
+   image(capture, 0, 0, 600, 600)
+ 
+    
+  }
+
+  else if (time <=1940){
+  
     image(capture, 0, 0, 600, 600)
-  } 
-  else if (time == 201) {
+    strokeWeight(0)
+    fill(0)
+    text("how does that make you feel?", width/2 , 50)
+     
+   }
+   else if (time <=1990){
+    image(capture, 0, 0, 600, 600)
+    strokeWeight(0)
+    fill(0)
+    text("show us!", width/2 , 50)
+   
+  
+     
+   }
+   else if (time <=2000){
+    image(capture, 0, 0, 600, 600)
+    strokeWeight(0)
+    fill(0)
+    text("in 3", width/2 , 50)
     
+  
+     
+   }
+   else if (time <=2010){
+    image(capture, 0, 0, 600, 600)
+    strokeWeight(0)
+    fill(0)
+    text("in 2", width/2 , 50)
+  
+  
+     
+   }
+   else if (time <=2020){
+    image(capture, 0, 0, 600, 600)
+    strokeWeight(0)
+    fill(0)
+    text("in 1", width/2 , 50)
+ 
+  
+     
+   }
+   else if (time ==2021){
     frame = capture.get()
-  }
+  
+     
+   }
+   else if (time > 2021) {
 
-  if (time > 201) {
+      shot_on(frame)
     
-    image(frame, 0, 0, width, height)
-  }
+    }
 
+    if (time >=3000){
+
+      steve_job()
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  //steve_job()
+
+
+
+  // if (time <= 200) {
+
+  //   image(capture, 0, 0, 600, 600)
+  // } 
+  // else if (time == 201) {
+    
+  //   frame = capture.get()
+  // }
+
+  // if (time > 201) {
+
+  //   shot_on(frame)
+  
+  // }
 
   
 
@@ -162,19 +387,120 @@ function draw() {
 }
 
 
-
-
-function shot_on(image){
+  function shot_on(snapshot) {
+    let size = 600
+    shot_time += 1
+  
+    if (shot_time <= 80) {
+      background(255)
+      size = 400
+      imageMode(CENTER)
+      image(snapshot, width/2, height/2, size, size)
+    }
+  
+    else if (shot_time <= 80) {
+  
+      fill(0)
+      text("Shot on iPhone " + phone_number, width/2 , height/2);
+    }
+    else if (shot_time <= 1000) {
+  
+      phone_number = floor(pow(1.01, shot_time -79));
+      fill(0)
+      text("Shot on iPhone " + phone_number, width/2 , height/2);
+    }
+  
 
 
 
 }
 
 
+function steve_job(){
+
+  fill(180)
+  strokeWeight(0)
+  rectMode(CORNER)
+  
+  ellipseMode(CENTER)
+
+        
+  
+
+  //background
+  fill(180);
+  rect(0, 0, 600, 600)
+
+  //screen
+  fill(100);
+  rect(240, 50, 350, 350)
+  fill(0)
+  strokeWeight(0)
+  text("pls stop buying", 410 , 150)
+  text("new phones!!!", 410 ,200)
+  text("(the end)", 410 , 310)
+  
+
+  //stage
+  fill(0);
+ 
+  rect(0, 400, 600, 100)
+
+ //podium
+  fill(139, 69, 19)
+  rect(50, 300, 40, 100)
+
+  let jobs_offset = 140
+
+  // Head 
+  fill(255,240,184) 
+  stroke(240)
+  ellipse(jobs_offset + 25, 255, 30, 30)
+
+  //body 
+  fill(0)
+  rect(jobs_offset, 280, 50, 70)
+  //Turtle neck 
+  rect(jobs_offset + 15, 270, 20, 25)
+
+  // Left Leg 
+  fill(150, 180, 255)
+  rect(jobs_offset + 5, 350, 15, 50)
+
+  // Right Leg 
+  fill(150, 180, 255)
+  rect(jobs_offset + 30, 350, 15, 50)
+
+  // Left Foot 
+  fill(255)
+  
+  rect(jobs_offset , 400, 20, 10)
+
+  // Right Foot 
+  fill(255)
+  rect(jobs_offset + 30, 400, 20, 10)
+
+  // Left Arm 
+  fill(0);
+  rect(jobs_offset - 10, 280, 10, 50)
+
+  // right arm
+  fill(0)
+  rect(jobs_offset + 50, 280,40, 10)
+
+  // Eyes 
+  fill(25)
+  ellipse(jobs_offset+ 25, 250, 6, 6)
+  ellipse(jobs_offset+35, 250, 6, 6)
+}
 
 
 
-function animate_arrow(a_y) {
+
+
+
+
+function animate_arrow() {
   strokeWeight(0)
   let color = colors[color_index]
   fill(color[0],color[1],color[2])
