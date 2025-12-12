@@ -8,6 +8,10 @@ let segInterval = 1;
 
 
 
+
+
+
+
 let font
 let logo
 let b
@@ -26,6 +30,7 @@ let time = 0
 let snapshot
 let shot_time = 0
 let phone_number = 1
+let canvas
 
 function preload(){
 
@@ -36,12 +41,16 @@ function preload(){
 
 
 function setup() {
-  createCanvas(600, 600);
+  canvas = createCanvas(600, 600);
+  canvas.position((windowWidth - width) / 2,(windowHeight - height) / 2)
+  
 
   textFont(font);
   textSize(32);
   textAlign(CENTER, CENTER)
   a_time = 0
+  noCursor()
+  frameRate(30)
 
 
 
@@ -124,6 +133,7 @@ function runSegmentationOnce() {
 
 function draw() {
 
+
   time += 1
   
   print(time)
@@ -131,213 +141,213 @@ function draw() {
   b = 255
   background(250)
 
-  // steve_job()
+   steve_job()
 
-  if (time <=1872){  animate_arrow()}
-
-  
-
-  if (time <= 134){
+  // if (time <=1872){  animate_arrow()}
 
   
-    image(logo,240,245,80,90)
 
-    
-  }
-  else if (time <= 198){
-    strokeWeight(0)
-    text("hello!", width/2 , height/2)
-
-
-  }
-  else if (time <= 264){
-    strokeWeight(0)
-    text("hello!", width/2 , height/2)
-
-    
-  }
-  else if (time <= 334){
-
-    strokeWeight(0)
-    text("Are you ready to dance?!", width/2 , height/2)
-
-    
-  }
-  else if (time <= 396){
-    strokeWeight(0)
-    text("Are you ready to dance?!", width/2 , height/2)
-
-    
-  }
-  else if (time <= 466){
-    strokeWeight(0)
-    text("Get ready!", width/2 , height/2)
-    
-
-    
-  }
-  else if (time <= 540){
-    strokeWeight(0)
-    text("dance!", width/2 , height/2)
-
-
-    
-  }
-  else if (time <=612){
-    run_mask()
-  }
-  else if (time <=700){
-
-    strokeWeight(0)
-    text("that was great!", width/2 , height/2)
-
-    
-  }
-  else if (time <=768){
-    strokeWeight(0)
-    text("lets go again!", width/2 , height/2)
-
-    
-  }
-  else if (time <=836){
+  // if (time <= 134){
 
   
-    run_mask()
+  //   image(logo,240,245,80,90)
 
     
-  }
-  else if (time <=904){
+  // }
+  // else if (time <= 198){
+  //   strokeWeight(0)
+  //   text("hello!", width/2 , height/2)
 
 
+  // }
+  // else if (time <= 264){
+  //   strokeWeight(0)
+  //   text("hello!", width/2 , height/2)
 
-    run_mask()
-    strokeWeight(0)
+    
+  // }
+  // else if (time <= 334){
+
+  //   strokeWeight(0)
+  //   text("Are you ready to dance?!", width/2 , height/2)
+
+    
+  // }
+  // else if (time <= 396){
+  //   strokeWeight(0)
+  //   text("Are you ready to dance?!", width/2 , height/2)
+
+    
+  // }
+  // else if (time <= 466){
+  //   strokeWeight(0)
+  //   text("Get ready!", width/2 , height/2)
+    
+
+    
+  // }
+  // else if (time <= 540){
+  //   strokeWeight(0)
+  //   text("dance!", width/2 , height/2)
+
+
+    
+  // }
+  // else if (time <=612){
+  //   run_mask()
+  // }
+  // else if (time <=700){
+
+  //   strokeWeight(0)
+  //   text("that was great!", width/2 , height/2)
+
+    
+  // }
+  // else if (time <=768){
+  //   strokeWeight(0)
+  //   text("lets go again!", width/2 , height/2)
+
+    
+  // }
+  // else if (time <=836){
+
   
-    text("oh, by the way", width/2 , 50)
+  //   run_mask()
+
+    
+  // }
+  // else if (time <=904){
+
+
+
+  //   run_mask()
+  //   strokeWeight(0)
+  
+  //   text("oh, by the way", width/2 , 50)
 
 
     
-  }
-  else if (time <=1040){
+  // }
+  // else if (time <=1040){
 
 
 
-    run_mask()
-    strokeWeight(0)
+  //   run_mask()
+  //   strokeWeight(0)
     
-    text("did you know that roughly 5.3 billion", width/2 , 50)
-    text("phones are expected to go to waste", width/2 , 80)
-    text("at the end of this year.", width/2 , 110)
-  }
-  else if (time <=1176){
+  //   text("did you know that roughly 5.3 billion", width/2 , 50)
+  //   text("phones are expected to go to waste", width/2 , 80)
+  //   text("at the end of this year.", width/2 , 110)
+  // }
+  // else if (time <=1176){
 
-    run_mask()
-    strokeWeight(0)
-    text("and a new phone is responsible for around ", width/2 , 50)
-    text("190 pounds of carbon emission", width/2 , 80)
+  //   run_mask()
+  //   strokeWeight(0)
+  //   text("and a new phone is responsible for around ", width/2 , 50)
+  //   text("190 pounds of carbon emission", width/2 , 80)
 
     
 
-  }
-  else if (time <=1335){
-    strokeWeight(0)
-    text("And that iPhones contain toxic ", width/2 , height/2)
-    text("materials such as", width/2  , height/2 +30)
+  // }
+  // else if (time <=1335){
+  //   strokeWeight(0)
+  //   text("And that iPhones contain toxic ", width/2 , height/2)
+  //   text("materials such as", width/2  , height/2 +30)
     
-  }
-  else if (time <=1471){
+  // }
+  // else if (time <=1471){
    
-    strokeWeight(0)
-    text("lead, mercury, cadmium,", width/2 , height/2)
-    text("arsenic, chromium, and flame retardants", width/2  , height/2 +30)
+  //   strokeWeight(0)
+  //   text("lead, mercury, cadmium,", width/2 , height/2)
+  //   text("arsenic, chromium, and flame retardants", width/2  , height/2 +30)
 
-  }
-  else if (time <=1600){
+  // }
+  // else if (time <=1600){
    
-    strokeWeight(0)
-    text("that totally suck for the enviornment! ", width/2 , height/2)
+  //   strokeWeight(0)
+  //   text("that totally suck for the enviornment! ", width/2 , height/2)
 
-  }
-  else if (time <=1668){
-    strokeWeight(0)
-    text("c'mon keep dancing!", width/2 , height/2)
+  // }
+  // else if (time <=1668){
+  //   strokeWeight(0)
+  //   text("c'mon keep dancing!", width/2 , height/2)
 
     
-  }
-  else if (time <=1736){
-    run_mask()
+  // }
+  // else if (time <=1736){
+  //   run_mask()
    
  
     
-  }
+  // }
 
-  else if (time <=1872){
+  // else if (time <=1872){
 
 
-   image(capture, 0, 0, 600, 600)
+  //  image(capture, 0, 0, 600, 600)
  
     
-  }
+  // }
 
-  else if (time <=1940){
+  // else if (time <=1940){
   
-    image(capture, 0, 0, 600, 600)
-    strokeWeight(0)
-    fill(0)
-    text("how does that make you feel?", width/2 , 50)
+  //   image(capture, 0, 0, 600, 600)
+  //   strokeWeight(0)
+  //   fill(0)
+  //   text("how does that make you feel?", width/2 , 50)
      
-   }
-   else if (time <=1990){
-    image(capture, 0, 0, 600, 600)
-    strokeWeight(0)
-    fill(0)
-    text("show us!", width/2 , 50)
+  //  }
+  //  else if (time <=1990){
+  //   image(capture, 0, 0, 600, 600)
+  //   strokeWeight(0)
+  //   fill(0)
+  //   text("show us!", width/2 , 50)
    
   
      
-   }
-   else if (time <=2000){
-    image(capture, 0, 0, 600, 600)
-    strokeWeight(0)
-    fill(0)
-    text("in 3", width/2 , 50)
+  //  }
+  //  else if (time <=2000){
+  //   image(capture, 0, 0, 600, 600)
+  //   strokeWeight(0)
+  //   fill(0)
+  //   text("in 3", width/2 , 50)
     
   
      
-   }
-   else if (time <=2010){
-    image(capture, 0, 0, 600, 600)
-    strokeWeight(0)
-    fill(0)
-    text("in 2", width/2 , 50)
+  //  }
+  //  else if (time <=2010){
+  //   image(capture, 0, 0, 600, 600)
+  //   strokeWeight(0)
+  //   fill(0)
+  //   text("in 2", width/2 , 50)
   
   
      
-   }
-   else if (time <=2020){
-    image(capture, 0, 0, 600, 600)
-    strokeWeight(0)
-    fill(0)
-    text("in 1", width/2 , 50)
+  //  }
+  //  else if (time <=2020){
+  //   image(capture, 0, 0, 600, 600)
+  //   strokeWeight(0)
+  //   fill(0)
+  //   text("in 1", width/2 , 50)
  
   
      
-   }
-   else if (time ==2021){
-    frame = capture.get()
+  //  }
+  //  else if (time ==2021){
+  //   frame = capture.get()
   
      
-   }
-   else if (time > 2021) {
+  //  }
+  //  else if (time > 2021) {
 
-      shot_on(frame)
+  //     shot_on(frame)
     
-    }
+  //   }
 
-    if (time >=3000){
+  //   if (time >=3000){
 
-      steve_job()
-    }
+  //     steve_job()
+  //   }
     
     
 
