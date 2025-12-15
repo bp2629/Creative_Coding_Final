@@ -32,9 +32,21 @@ let shot_time = 0
 let phone_number = 1
 let canvas
 
+let arm  = 190
+let a_in  = arm
+let a_out = arm + 25
+let s_counter = 1
+
 function preload(){
 
   logo = loadImage('applelogo.png');
+
+  steve = loadImage('stevejobs.png')
+
+  ewaste1 = loadImage('ewaste1.jpg')
+  ewaste2= loadImage('ewaste2.jpeg')
+  ewaste3= loadImage('ewaste3.jpeg')
+  ewaste4= loadImage('ewaste4.jpeg')
 
   font = loadFont("SF-Pro-Display-Medium.ttf")
 }
@@ -428,6 +440,8 @@ function draw() {
 
 function steve_job(){
 
+  s_counter += 1 
+
   fill(180)
   strokeWeight(0)
   rectMode(CORNER)
@@ -442,13 +456,37 @@ function steve_job(){
   rect(0, 0, 600, 600)
 
   //screen
+
+
+
+  let screen_cycle = 120
+
+
   fill(100);
   rect(240, 50, 350, 350)
-  fill(0)
+
+  let slideshow = [ewaste1, ewaste2, ewaste3, ewaste4]
+  if ((s_counter % (screen_cycle * 2)) < screen_cycle) {
+
+    let slideshow_index = floor((s_counter % screen_cycle) / 30)
+  slideshow_index = slideshow_index % slideshow.length;  
+
+  image(slideshow[slideshow_index], 270, 110, 300, 225);
+    
+    // image(ewaste1,270,110,300,225)
+    // image(ewaste2,270,110,300,225)
+    // image(ewaste3,240,110,350,225)
+    // image(ewaste4,240,110,350,225)
+  } else {
+    
+  fill(255)
   strokeWeight(0)
-  text("pls stop buying", 410 , 150)
-  text("new phones!!!", 410 ,200)
-  text("(the end)", 410 , 310)
+  text("introducing:", 410 , 150)
+  text("iPhone 18", 410 ,220)
+  text("Buy NOW!", 410 , 310)
+  }
+
+
   
 
   //stage
@@ -463,9 +501,10 @@ function steve_job(){
   let jobs_offset = 140
 
   // Head 
-  fill(255,240,184) 
-  stroke(240)
-  ellipse(jobs_offset + 25, 255, 30, 30)
+  image(steve,62,110,200,200)
+  // fill(255,240,184) 
+  // stroke(240)
+  // ellipse(jobs_offset + 25, 255, 30, 30)
 
   //body 
   fill(0)
@@ -496,12 +535,25 @@ function steve_job(){
 
   // right arm
   fill(0)
-  rect(jobs_offset + 50, 280,40, 10)
+
+  let arm_cycle = 10
+
+  rect(arm, 280, 40, 10)
+  if ((s_counter % (arm_cycle * 2)) < arm_cycle) {
+    
+    rect(arm, 280, 40, 10);
+  } else {
+    
+    rect(a_out, 280, 40, 10);
+  }
+  
+
+  
 
   // Eyes 
-  fill(25)
-  ellipse(jobs_offset+ 25, 250, 6, 6)
-  ellipse(jobs_offset+35, 250, 6, 6)
+  // fill(25)
+  // ellipse(jobs_offset+ 25, 250, 6, 6)
+  // ellipse(jobs_offset+35, 250, 6, 6)
 }
 
 
