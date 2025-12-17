@@ -1,6 +1,5 @@
 // MASK MASK MASK MASK MASK MASK MASK MASK MASK MASK 
 // MASK MASK MASK MASK MASK MASK MASK MASK MASK MASK 
-
 let capture; //variable to create capture 
 let net = null; // holds the sillohoute body 
 let maskGraphics; // variable that allows to draw/compute the mask, before drawing it on the screen
